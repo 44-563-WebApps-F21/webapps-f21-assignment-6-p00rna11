@@ -21,6 +21,11 @@
     
     
     <p id="result" style="margin:10px;"></p>
+
+    <div class="container">
+         
+        <img src="tuna.jpg" id="picswap" alt="yellowfin tuna" style="height: 200px;" width="200px" onclick="newImage()">
+    </div>
     
     <script> 
      correct = 0;
@@ -42,8 +47,29 @@
          out.innerHTML = "Correct: " + correct + "<br>" + "Wrong: " + wrong;
         
     }
+
+    var usingImage = 1;
+
+    function newImage(){
+    
+    switch(usingImage) {
+       case 1:
+           usingImage++;
+          document.getElementById("picswap").src="albatros.jpg";
+           break;
+       case 2:
+           usingImage++;
+           document.getElementById("picswap").src="narwhal.jpg";
+           break;
+       case 3:
+           usingImage =1;
+           document.getElementById("picswap").src="tuna.jpg";
+           break;
+    }
+
+}
     </script>
 
 
 </body>
-</html> 
+</html>
