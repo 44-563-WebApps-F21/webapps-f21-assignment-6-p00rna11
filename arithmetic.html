@@ -9,7 +9,7 @@
 
 <h2>PoornaChand Computes</h2>
 
-<form>
+    <form>
     <label for="base number">Enter a base </label>
     <input type ="number" id="base_number" name="base_number"  value=10> 
     
@@ -24,14 +24,31 @@
 
     <input type="button" onclick="powers()" value="Compute">
     <div id="result">  </div>
-</form>
+    </form>
 
+    <form>
+    
+        <input type="radio" id="addition" name="mathOperation" value="+" onclick="processRadio()">
+        <label for="+">Add</label></br>
+      
+        <input type="radio" id="subtraction" name="mathOperation" value="-" onclick="processRadio()">
+        <label for="-">Subtract</label></br>
+      
+        <input type="radio" id="multiply" name="mathOperation" value="*" onclick="processRadio()">
+        <label for="*">Multiply</label></br>
+
+        <input type="radio" id="divide" name="mathOperation" value="/" onclick="processRadio()">
+     <label for="/">divide</label></br>
+
+            <p id="mathresults"> </p>
+    </form>
 
 <script>
     function powers(){
 
         var baseNumber = document.getElementById("base_number").value;
         var exponentNumber=document.getElementById("exponent_number").value;
+
          var result= " " ;
         result="power of"+ baseNumber + " are: ";
 
@@ -44,8 +61,37 @@
     
     }
 
+    function processRadio() {
 
+        var baseNumber = document.getElementById("base_number").value;
+        var exponentNumber=document.getElementById("exponent_number").value;
+         
+        var mathOperation = document.getElementsByName('mathOperation');
+        var operator="";
+        var mathresults=0;
 
+        for (var i = 0, length = mathOperation.length; i < length; i++) {
+        
+            if (mathOperation[i].checked) {
+
+                operator = mathOperation[i].value;
+                
+                if(operator =="+"){
+                    mathresults = parseFloat(baseNumber)+parseFloat(exponentNumber);
+                }else if(operator == "-"){
+                    mathresults = baseNumber-exponentNumber;
+                }else if(operator == "*"){
+                    mathresults = baseNumber*exponentNumber;
+                }else{
+                    mathresults = baseNumber/exponentNumber;
+                }
+
+                document.getElementById("mathresults").innerHTML = mathresults;
+
+                break;
+            }
+        }
+    }
 </script>
 
 </body>
